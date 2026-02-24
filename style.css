@@ -620,6 +620,140 @@ html, body {
   border-bottom: none;
 }
 
+/* === In-Email Ad (Gmail-style sponsored message) === */
+.email-ad {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.email-ad-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.email-ad-card-wrap {
+  position: relative;
+}
+
+.email-ad-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  padding-right: 44px;
+  background: #fef7e0;
+  border: 1px solid #f0e6b8;
+  border-left: 4px solid #f4b400;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.email-ad-card:hover {
+  background: #fdf0c4;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.email-ad-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #34a853;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.email-ad-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.email-ad-sender {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-ad-headline {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email-ad-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.email-ad-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 16px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.email-ad-cta:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.email-ad-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+  z-index: 1;
+}
+
+.email-ad-close:hover {
+  background: rgba(0,0,0,0.08);
+  color: var(--text-primary);
+}
+
+.email-ad.dismissed {
+  display: none;
+}
+
 /* === Inbox Footer === */
 .inbox-footer {
   display: flex;
@@ -1283,6 +1417,56 @@ html, body {
     margin-top: 28px;
     padding-top: 14px;
   }
+
+  /* --- In-email ad mobile --- */
+  .email-ad {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+
+  .email-ad-header {
+    margin-bottom: 8px;
+  }
+
+  .email-ad-card {
+    padding: 14px;
+    padding-right: 48px;
+    gap: 10px;
+  }
+
+  .email-ad-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .email-ad-sender {
+    font-size: 13px;
+  }
+
+  .email-ad-headline {
+    font-size: 13px;
+  }
+
+  .email-ad-text {
+    font-size: 12px;
+  }
+
+  .email-ad-cta {
+    font-size: 13px;
+    padding: 10px 16px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .email-ad-close {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    top: 4px;
+    right: 4px;
+  }
 }
 
 /* === Extra small screens (iPhone SE, etc.) === */
@@ -1314,5 +1498,29 @@ html, body {
   }
   .email-body {
     font-size: 14px;
+  }
+  .email-ad-card {
+    padding: 12px 10px;
+    padding-right: 44px;
+    gap: 8px;
+  }
+  .email-ad-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .email-ad-sender {
+    font-size: 12px;
+  }
+  .email-ad-headline {
+    font-size: 12px;
+  }
+  .email-ad-text {
+    font-size: 11px;
+  }
+  .email-ad-cta {
+    display: block;
+    text-align: center;
+    padding: 10px 12px;
   }
 }

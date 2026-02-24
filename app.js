@@ -377,6 +377,14 @@ function renderEmailView(id) {
   const avatar = document.getElementById('emailAvatar');
   avatar.style.backgroundColor = email.avatarColor;
   avatar.textContent = email.sender.charAt(0).toUpperCase();
+
+  // Show/hide in-email ad (only on sample emails, not starred meta emails)
+  const adEl = document.getElementById('emailAd');
+  if (adDismissed || email.starred) {
+    adEl.classList.add('dismissed');
+  } else {
+    adEl.classList.remove('dismissed');
+  }
 }
 
 // === View Switching ===
@@ -515,6 +523,18 @@ document.querySelectorAll('.nav-item').forEach(item => {
     sidebarBackdrop.classList.remove('visible');
     if (currentView === 'email') showInbox();
   });
+});
+
+// === In-Email Ad Dismiss ===
+const emailAd = document.getElementById('emailAd');
+const emailAdClose = document.getElementById('emailAdClose');
+let adDismissed = false;
+
+emailAdClose.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  emailAd.classList.add('dismissed');
+  adDismissed = true;
 });
 
 // === Init ===
