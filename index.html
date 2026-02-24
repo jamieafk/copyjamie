@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CopyJamie — Inbox</title>
+  <meta name="description" content="CopyJamie — an email copywriter's portfolio, experienced the way your subscribers will. Click into real copywriting samples.">
+  <meta property="og:title" content="CopyJamie — Email Copywriter Portfolio">
+  <meta property="og:description" content="A fake inbox. Real copywriting. Click into each email to see the work.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CopyJamie — Email Copywriter Portfolio">
+  <meta name="twitter:description" content="A fake inbox. Real copywriting. Click into each email to see the work.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Main menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
+          <path d="M1 5.5L12 13.5L23 5.5V18.5C23 19.6 22.1 20.5 21 20.5H3C1.9 20.5 1 19.6 1 18.5V5.5Z" fill="#c2e7ff"/>
+          <path d="M23 5.5L12 13.5L1 5.5L3 3.5H21L23 5.5Z" fill="#4285f4"/>
+        </svg>
+        <span class="logo-text">CopyJamie</span>
+      </a>
+    </div>
+    <div class="topbar-center">
+      <div class="search-bar" id="searchBar">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" id="searchInput" placeholder="Search emails" autocomplete="off" aria-label="Search emails">
+      </div>
+    </div>
+    <div class="topbar-right">
+      <button class="icon-btn" aria-label="Support">
+        <span class="material-symbols-outlined">help_outline</span>
+      </button>
+      <button class="icon-btn" aria-label="Settings">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+      <button class="avatar-btn" id="profileBtn" aria-label="Profile">J</button>
+    </div>
+  </header>
+
+  <!-- Sidebar backdrop (mobile) -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <a href="contact.html" class="compose-btn">
+        <span class="material-symbols-outlined">edit</span>
+        <span class="compose-label">Compose</span>
+      </a>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-view="inbox">
+          <span class="material-symbols-outlined">inbox</span>
+          <span class="nav-label">Inbox</span>
+          <span class="nav-count" id="inboxCount"></span>
+        </a>
+        <a href="#" class="nav-item" data-view="starred">
+          <span class="material-symbols-outlined">star</span>
+          <span class="nav-label">Starred</span>
+        </a>
+        <a href="#" class="nav-item" data-view="sent">
+          <span class="material-symbols-outlined">send</span>
+          <span class="nav-label">Sent</span>
+        </a>
+        <a href="#" class="nav-item" data-view="drafts">
+          <span class="material-symbols-outlined">draft</span>
+          <span class="nav-label">Drafts</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="content">
+
+      <!-- Inbox View -->
+      <div class="inbox-view" id="inboxView">
+        <!-- Inbox toolbar -->
+        <div class="inbox-toolbar">
+          <label class="checkbox-wrap">
+            <input type="checkbox" id="selectAll">
+            <span class="material-symbols-outlined checkmark">check_box_outline_blank</span>
+          </label>
+          <button class="icon-btn" aria-label="Refresh" onclick="location.reload()">
+            <span class="material-symbols-outlined">refresh</span>
+          </button>
+          <button class="icon-btn" aria-label="More">
+            <span class="material-symbols-outlined">more_vert</span>
+          </button>
+        </div>
+
+        <!-- Starred Section -->
+        <div class="email-section" id="starredSection">
+          <button class="section-header" id="starredToggle">
+            <span class="material-symbols-outlined section-caret">expand_more</span>
+            <span class="section-label">Starred</span>
+          </button>
+          <div class="section-body" id="starredList"></div>
+        </div>
+
+        <!-- Ad CTA -->
+        <div class="email-section ad-section">
+          <a href="contact.html" class="email-row ad-row">
+            <span class="ad-badge">Ad</span>
+            <div class="email-row-avatar ad-avatar" style="background:#34a853">J</div>
+            <span class="email-sender">Jamie — Email Copywriter</span>
+            <div class="email-content">
+              <span class="email-subject-line">Want emails like these for your business?</span>
+              <span class="email-preview">Book a free discovery call. I'll tell you exactly what I'd write and why.</span>
+            </div>
+            <span class="ad-inline-cta">Book a call</span>
+            <span class="email-row-date">Today</span>
+          </a>
+        </div>
+
+        <!-- Everything Else Section -->
+        <div class="email-section" id="everythingSection">
+          <button class="section-header" id="everythingToggle">
+            <span class="material-symbols-outlined section-caret">expand_more</span>
+            <span class="section-label">Everything else</span>
+          </button>
+          <div class="section-body" id="everythingList"></div>
+        </div>
+        <!-- No results -->
+        <div class="no-results" id="noResults">
+          <span class="material-symbols-outlined">search_off</span>
+          No emails match your search
+        </div>
+      </div>
+
+      <!-- Email Read View -->
+      <div class="email-view" id="emailView" style="display:none">
+        <div class="email-view-toolbar">
+          <button class="icon-btn" id="backBtn" aria-label="Back to inbox">
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button class="icon-btn" aria-label="Archive">
+            <span class="material-symbols-outlined">archive</span>
+          </button>
+          <button class="icon-btn" aria-label="Delete">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+          <button class="icon-btn" aria-label="Mark as unread">
+            <span class="material-symbols-outlined">mark_email_unread</span>
+          </button>
+        </div>
+        <div class="email-view-content">
+          <h1 class="email-subject" id="emailSubject"></h1>
+          <div class="email-meta">
+            <div class="email-avatar" id="emailAvatar"></div>
+            <div class="email-meta-text">
+              <div class="email-meta-top">
+                <span class="email-sender-name" id="emailSenderName"></span>
+                <span class="email-sender-addr" id="emailSenderAddr"></span>
+              </div>
+              <div class="email-meta-bottom">to me</div>
+            </div>
+            <div class="email-date" id="emailDate"></div>
+          </div>
+          <div class="email-body" id="emailBody"></div>
+        </div>
+      </div>
+
+      <!-- Gmail-style footer -->
+      <footer class="inbox-footer">
+        <div class="footer-links">
+          <a href="contact.html">Contact Jamie</a>
+          <span class="footer-dot">&middot;</span>
+          <a href="contact.html">Outsource Your Copywriting</a>
+          <span class="footer-dot">&middot;</span>
+          <a href="contact.html">Book a Free Call</a>
+        </div>
+        <div class="footer-activity">Not a real inbox — it's a portfolio · <a href="contact.html">Hire Jamie</a></div>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
