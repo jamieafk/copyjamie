@@ -620,18 +620,11 @@ html, body {
   border-bottom: none;
 }
 
-/* === In-Email Ad (Gmail-style sponsored message) === */
+/* === In-Email Ad (compact banner) === */
 .email-ad {
   margin-top: 32px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
-}
-
-.email-ad-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
 }
 
 .email-ad-card-wrap {
@@ -640,29 +633,31 @@ html, body {
 
 .email-ad-card {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
-  padding-right: 44px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 44px 10px 12px;
   background: #fef7e0;
   border: 1px solid #f0e6b8;
   border-left: 4px solid #f4b400;
   border-radius: 8px;
   text-decoration: none;
   color: var(--text-primary);
-  transition: background 0.15s, box-shadow 0.15s;
+  transition: background 0.15s;
   cursor: pointer;
   overflow: hidden;
 }
 
 .email-ad-card:hover {
   background: #fdf0c4;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.email-ad-card .ad-badge {
+  flex-shrink: 0;
 }
 
 .email-ad-avatar {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #34a853;
   color: #fff;
@@ -670,52 +665,30 @@ html, body {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 500;
   flex-shrink: 0;
-}
-
-.email-ad-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.email-ad-sender {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.email-ad-headline {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .email-ad-text {
   font-size: 13px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 10px;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
 }
 
 .email-ad-cta {
-  display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--blue);
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 6px 16px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
@@ -727,8 +700,9 @@ html, body {
 
 .email-ad-close {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
   display: flex;
@@ -737,7 +711,7 @@ html, body {
   border-radius: 50%;
   border: none;
   background: transparent;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--text-light);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
@@ -1424,48 +1398,34 @@ html, body {
     padding-top: 16px;
   }
 
-  .email-ad-header {
-    margin-bottom: 8px;
-  }
-
   .email-ad-card {
-    padding: 14px;
-    padding-right: 48px;
-    gap: 10px;
-  }
-
-  .email-ad-avatar {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-
-  .email-ad-sender {
-    font-size: 13px;
-  }
-
-  .email-ad-headline {
-    font-size: 13px;
+    flex-wrap: wrap;
+    padding: 10px 44px 10px 10px;
+    gap: 8px;
   }
 
   .email-ad-text {
     font-size: 12px;
+    flex-basis: 100%;
+    order: 4;
   }
 
   .email-ad-cta {
-    font-size: 13px;
-    padding: 10px 16px;
+    font-size: 12px;
+    padding: 10px 14px;
     min-height: 44px;
     display: inline-flex;
     align-items: center;
+    flex-basis: 100%;
+    justify-content: center;
+    order: 5;
   }
 
   .email-ad-close {
     width: 44px;
     height: 44px;
-    font-size: 22px;
-    top: 4px;
-    right: 4px;
+    font-size: 20px;
+    right: 0;
   }
 }
 
@@ -1500,27 +1460,15 @@ html, body {
     font-size: 14px;
   }
   .email-ad-card {
-    padding: 12px 10px;
-    padding-right: 44px;
-    gap: 8px;
+    padding: 8px 40px 8px 8px;
+    gap: 6px;
   }
   .email-ad-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-  .email-ad-sender {
-    font-size: 12px;
-  }
-  .email-ad-headline {
-    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
   }
   .email-ad-text {
     font-size: 11px;
-  }
-  .email-ad-cta {
-    display: block;
-    text-align: center;
-    padding: 10px 12px;
   }
 }
