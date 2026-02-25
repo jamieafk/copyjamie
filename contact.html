@@ -409,9 +409,20 @@
       background: #e8eaed;
     }
 
-    /* Comms pills with sub-text get more horizontal room */
+    /* Comms pills: override .form-group label specificity + spacing */
     #commsControl .seg-pill {
-      padding: 10px 24px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      margin-bottom: 0;
+    }
+
+    #commsControl {
+      gap: 10px;
     }
 
     .seg-control input[type="radio"]:checked + .seg-pill {
@@ -428,10 +439,16 @@
 
     /* Brand number pills: fixed size circle so text centers perfectly */
     #brandsControl .seg-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 44px;
       height: 44px;
       padding: 0;
       border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+      margin-bottom: 0;
     }
 
     .seg-sub {
@@ -445,7 +462,11 @@
     .seg-price-note {
       font-size: 13px;
       color: var(--text-secondary);
-      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .seg-price-note:empty {
+      display: none;
     }
 
     .seg-price-note strong {
@@ -516,32 +537,47 @@
       display: none;
       font-size: 13px;
       color: var(--text-secondary);
-      padding: 10px 16px;
-      background: #f8f9fa;
-      border-top: 1px solid var(--border);
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
+      padding: 14px 20px;
+      margin: 0 16px 4px;
+      background: #f0f7f0;
+      border: 1px solid #c8e6c9;
+      border-radius: 10px;
     }
 
     .live-summary.visible {
+      display: block;
+    }
+
+    .live-summary .summary-line {
       display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 3px 0;
     }
 
-    .live-summary-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
+    .live-summary .summary-line + .summary-line {
+      margin-top: 2px;
     }
 
-    .live-summary-item strong {
+    .live-summary .summary-emoji {
+      flex-shrink: 0;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .live-summary .summary-text {
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .live-summary .summary-text strong {
       color: var(--text-primary);
-      font-weight: 500;
     }
 
-    .live-summary-dot {
-      color: var(--border);
-      margin: 0 2px;
+    .live-summary .summary-savings {
+      color: #137333;
+      font-weight: 500;
+      font-size: 12px;
     }
 
     /* Social proof */
@@ -682,6 +718,7 @@
 
           <fieldset class="form-group">
             <legend>How many brands do you need copy for?</legend>
+            <div class="seg-price-note" id="brandPrice"></div>
             <div class="seg-control" id="brandsControl">
               <input type="radio" name="brands" id="brand1" value="1" required>
               <label for="brand1" class="seg-pill">1</label>
@@ -696,7 +733,6 @@
               <input type="radio" name="brands" id="brand6" value="6-plus">
               <label for="brand6" class="seg-pill">6+</label>
             </div>
-            <div class="seg-price-note" id="brandPrice"></div>
           </fieldset>
 
           <div class="form-group">
@@ -816,38 +852,40 @@
 
       var isCustom = brand === '6-plus';
       var hasSeq = seq && seq !== 'none';
-      var lines = [];
+      var html = '';
+
+      function summaryLine(emoji, text) {
+        return '<div class="summary-line"><span class="summary-emoji">' + emoji + '</span><span class="summary-text">' + text + '</span></div>';
+      }
 
       // Monthly line
       if (isCustom) {
-        var ml = 'Monthly: <strong>Custom pricing</strong> for 6+ brands';
-        if (!hasSeq) ml = '<strong>Custom pricing</strong> for 6+ brands — let\u2019s discuss on the call';
-        lines.push(ml);
+        html += summaryLine('\u270F\uFE0F', 'Monthly cost: <strong>Custom pricing</strong> for 6+ brands \u2014 let\u2019s discuss on the call');
       } else {
         var monthly = brandPricingNum[brand];
         var asyncApplied = comms === 'async';
         if (asyncApplied) monthly -= 200;
-        var ml = hasSeq ? 'Monthly: ' : '';
-        ml += '<strong>' + fmt(monthly) + '/mo</strong> for ' + brandLabels[brand] + ' (monthly campaigns)';
-        if (asyncApplied) ml += ' — async discount applied';
-        lines.push(ml);
+        var prefix = hasSeq ? 'Monthly cost: ' : '';
+        var ml = prefix + '<strong>' + fmt(monthly) + '/mo</strong> for ' + brandLabels[brand] + ' (monthly campaigns)';
+        if (asyncApplied) ml += ' <span class="summary-savings">\u2014 async discount applied</span>';
+        html += summaryLine('\uD83D\uDCE8', ml);
       }
 
       // One-time line
       if (hasSeq) {
         var seqCost = seqPricingNum[seq];
-        var sl = 'One-time: <strong>' + fmt(seqCost) + '</strong> for ' + seq + ' sequence' + (seq === '1' ? '' : 's');
-        if (seqSavings[seq]) sl += ' (save ' + fmt(seqSavings[seq]) + ')';
-        lines.push(sl);
+        var sl = 'One-time cost: <strong>' + fmt(seqCost) + '</strong> for ' + seq + ' sequence' + (seq === '1' ? '' : 's');
+        if (seqSavings[seq]) sl += ' <span class="summary-savings">(save ' + fmt(seqSavings[seq]) + ')</span>';
+        html += summaryLine('\uD83D\uDCCB', sl);
       }
 
-      liveSummary.innerHTML = lines.join('<br>');
+      liveSummary.innerHTML = html;
       liveSummary.classList.add('visible');
     }
 
     document.getElementById('brandsControl').addEventListener('change', function(e) {
       var val = e.target.value;
-      brandPriceNote.innerHTML = '<strong>' + brandPricing[val] + '</strong> — unlimited monthly campaign emails';
+      brandPriceNote.innerHTML = '<strong>' + brandPricing[val] + '</strong> — unlimited monthly campaign emails for ' + brandLabels[val];
       updateSummary();
     });
 
