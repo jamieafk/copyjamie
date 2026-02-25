@@ -471,6 +471,12 @@ document.querySelector('.content').addEventListener('keydown', (e) => {
 // Back button
 backBtn.addEventListener('click', showInbox);
 
+// Logo click: reset to inbox without full page reload
+document.querySelector('.logo').addEventListener('click', (e) => {
+  e.preventDefault();
+  showInbox();
+});
+
 // Keyboard: Escape to go back or close sidebar
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
