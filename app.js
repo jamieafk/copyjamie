@@ -480,14 +480,8 @@ setupCollapse(everythingToggle, everythingList);
 starredToggle.setAttribute('aria-expanded', 'true');
 everythingToggle.setAttribute('aria-expanded', 'true');
 
-// Star toggle
-function toggleStar(id) {
-  const email = emails.find(e => e.id === id);
-  if (email) {
-    email.starred = !email.starred;
-    renderInbox(searchInput.value);
-  }
-}
+// Star toggle — disabled, stars are fixed
+function toggleStar(id) {}
 
 // Search
 searchInput.addEventListener('input', (e) => {
