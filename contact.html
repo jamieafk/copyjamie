@@ -391,13 +391,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 14px;
+      padding: 10px 20px;
+      min-height: 44px;
       font-family: var(--font-body);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-secondary);
       background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 22px;
       cursor: pointer;
       transition: all 0.15s;
       user-select: none;
@@ -406,6 +407,11 @@
 
     .seg-pill:hover {
       background: #e8eaed;
+    }
+
+    /* Comms pills with sub-text get more horizontal room */
+    #commsControl .seg-pill {
+      padding: 10px 24px;
     }
 
     .seg-control input[type="radio"]:checked + .seg-pill {
@@ -418,6 +424,11 @@
     .seg-control input[type="radio"]:focus-visible + .seg-pill {
       outline: 2px solid var(--blue);
       outline-offset: 2px;
+    }
+
+    /* Brand number pills need min-width since they're single characters */
+    #brandsControl .seg-pill {
+      min-width: 44px;
     }
 
     .seg-sub {
