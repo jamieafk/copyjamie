@@ -401,7 +401,7 @@ function showInbox() {
   inboxView.style.display = '';
   animateIn(inboxView);
   document.querySelector('.content').scrollTop = 0;
-  searchInput.focus();
+  // Don't auto-focus search — triggers keyboard + zoom on iOS
   document.title = 'CopyJamie — Inbox';
 }
 
