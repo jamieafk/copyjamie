@@ -562,18 +562,18 @@ html, body {
 }
 
 /* === Ad Row === */
-.ad-row {
+.pitch-row {
   text-decoration: none;
   color: var(--text-primary);
   background: #fef7e0;
   border-left: 4px solid #f4b400;
 }
 
-.ad-row:hover {
+.pitch-row:hover {
   background: #fdf0c4;
 }
 
-.ad-badge {
+.pitch-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -588,15 +588,15 @@ html, body {
   margin-right: 4px;
 }
 
-.ad-row .email-sender {
+.pitch-row .email-sender {
   font-weight: 700;
 }
 
-.ad-row .email-subject-line {
+.pitch-row .email-subject-line {
   font-weight: 700;
 }
 
-.ad-inline-cta {
+.pitch-inline-cta {
   display: inline-flex;
   align-items: center;
   font-size: 12px;
@@ -611,27 +611,27 @@ html, body {
   transition: background 0.15s, color 0.15s;
 }
 
-.ad-row:hover .ad-inline-cta {
+.pitch-row:hover .pitch-inline-cta {
   background: rgba(0,0,0,0.06);
   color: var(--text-primary);
 }
 
-.ad-section {
+.pitch-section {
   border-bottom: none;
 }
 
 /* === In-Email Ad (compact banner) === */
-.email-ad {
+.email-pitch {
   margin-top: 32px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
 }
 
-.email-ad-card-wrap {
+.email-pitch-card-wrap {
   position: relative;
 }
 
-.email-ad-card {
+.email-pitch-card {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -647,15 +647,15 @@ html, body {
   overflow: hidden;
 }
 
-.email-ad-card:hover {
+.email-pitch-card:hover {
   background: #fdf0c4;
 }
 
-.email-ad-card .ad-badge {
+.email-pitch-card .pitch-badge {
   flex-shrink: 0;
 }
 
-.email-ad-avatar {
+.email-pitch-avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -670,7 +670,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.email-ad-text {
+.email-pitch-text {
   font-size: 13px;
   color: var(--text-secondary);
   white-space: nowrap;
@@ -680,7 +680,7 @@ html, body {
   min-width: 0;
 }
 
-.email-ad-cta {
+.email-pitch-cta {
   font-size: 12px;
   font-weight: 500;
   color: var(--blue);
@@ -692,13 +692,13 @@ html, body {
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.email-ad-cta:hover {
+.email-pitch-cta:hover {
   background: var(--blue);
   color: #fff;
   border-color: var(--blue);
 }
 
-.email-ad-close {
+.email-pitch-close {
   position: absolute;
   top: 50%;
   right: 6px;
@@ -719,12 +719,12 @@ html, body {
   z-index: 1;
 }
 
-.email-ad-close:hover {
+.email-pitch-close:hover {
   background: rgba(0,0,0,0.08);
   color: var(--text-primary);
 }
 
-.email-ad.dismissed {
+.email-pitch.dismissed {
   display: none;
 }
 
@@ -1257,35 +1257,35 @@ html, body {
   }
 
   /* --- Ad row mobile --- */
-  .ad-row {
+  .pitch-row {
     grid-template-columns: 40px 1fr auto;
     border-left: 4px solid #f4b400;
   }
-  .ad-row .ad-badge {
+  .pitch-row .pitch-badge {
     grid-row: 1;
     grid-column: 3;
     align-self: center;
     margin-right: 0;
   }
-  .ad-row .ad-inline-cta {
+  .pitch-row .pitch-inline-cta {
     grid-row: 3;
     grid-column: 2 / 4;
     justify-self: start;
     margin-left: 0;
     margin-top: 6px;
   }
-  .ad-row .ad-avatar {
+  .pitch-row .pitch-avatar {
     display: flex;
   }
-  .ad-row .email-sender {
+  .pitch-row .email-sender {
     grid-row: 1;
     grid-column: 2;
   }
-  .ad-row .email-content {
+  .pitch-row .email-content {
     grid-row: 2;
     grid-column: 2 / 4;
   }
-  .ad-row .email-row-date {
+  .pitch-row .email-row-date {
     display: none;
   }
 
@@ -1393,24 +1393,24 @@ html, body {
   }
 
   /* --- In-email ad mobile --- */
-  .email-ad {
+  .email-pitch {
     margin-top: 24px;
     padding-top: 16px;
   }
 
-  .email-ad-card {
+  .email-pitch-card {
     flex-wrap: wrap;
     padding: 10px 44px 10px 10px;
     gap: 8px;
   }
 
-  .email-ad-text {
+  .email-pitch-text {
     font-size: 12px;
     flex-basis: 100%;
     order: 4;
   }
 
-  .email-ad-cta {
+  .email-pitch-cta {
     font-size: 12px;
     padding: 10px 14px;
     min-height: 44px;
@@ -1421,7 +1421,7 @@ html, body {
     order: 5;
   }
 
-  .email-ad-close {
+  .email-pitch-close {
     width: 44px;
     height: 44px;
     font-size: 20px;
@@ -1459,16 +1459,16 @@ html, body {
   .email-body {
     font-size: 14px;
   }
-  .email-ad-card {
+  .email-pitch-card {
     padding: 8px 40px 8px 8px;
     gap: 6px;
   }
-  .email-ad-avatar {
+  .email-pitch-avatar {
     width: 24px;
     height: 24px;
     font-size: 11px;
   }
-  .email-ad-text {
+  .email-pitch-text {
     font-size: 11px;
   }
 }

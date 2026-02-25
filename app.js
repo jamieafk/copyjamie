@@ -390,12 +390,12 @@ function renderEmailView(id) {
   avatar.style.backgroundColor = email.avatarColor;
   avatar.textContent = email.sender.charAt(0).toUpperCase();
 
-  // Show/hide in-email ad (only on sample emails, not starred meta emails)
-  const adEl = document.getElementById('emailAd');
-  if (adDismissed || email.starred) {
-    adEl.classList.add('dismissed');
+  // Show/hide in-email pitch (only on sample emails, not starred meta emails)
+  const pitchEl = document.getElementById('emailPitch');
+  if (pitchDismissed || email.starred) {
+    pitchEl.classList.add('dismissed');
   } else {
-    adEl.classList.remove('dismissed');
+    pitchEl.classList.remove('dismissed');
   }
 }
 
@@ -453,7 +453,7 @@ window.addEventListener('popstate', (e) => {
 document.querySelector('.content').addEventListener('click', (e) => {
   const row = e.target.closest('.email-row');
   if (!row) return;
-  if (row.classList.contains('ad-row')) return; // Let native <a> navigation happen
+  if (row.classList.contains('pitch-row')) return; // Let native <a> navigation happen
   showEmail(parseInt(row.dataset.id));
 });
 
@@ -461,7 +461,7 @@ document.querySelector('.content').addEventListener('click', (e) => {
 document.querySelector('.content').addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     const row = e.target.closest('.email-row');
-    if (row && !row.classList.contains('ad-row')) {
+    if (row && !row.classList.contains('pitch-row')) {
       e.preventDefault();
       showEmail(parseInt(row.dataset.id));
     }
@@ -546,16 +546,16 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// === In-Email Ad Dismiss ===
-const emailAd = document.getElementById('emailAd');
-const emailAdClose = document.getElementById('emailAdClose');
-let adDismissed = false;
+// === In-Email Pitch Dismiss ===
+const emailPitch = document.getElementById('emailPitch');
+const emailPitchClose = document.getElementById('emailPitchClose');
+let pitchDismissed = false;
 
-emailAdClose.addEventListener('click', (e) => {
+emailPitchClose.addEventListener('click', (e) => {
   e.preventDefault();
   e.stopPropagation();
-  emailAd.classList.add('dismissed');
-  adDismissed = true;
+  emailPitch.classList.add('dismissed');
+  pitchDismissed = true;
 });
 
 // === Init ===
