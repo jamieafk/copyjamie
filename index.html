@@ -29,10 +29,10 @@
   <header class="topbar">
     <div class="topbar-left">
       <button class="icon-btn hamburger" id="hamburger" aria-label="Main menu">
-        <span class="material-symbols-outlined">menu</span>
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
       </button>
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
           <path d="M1 5.5L12 13.5L23 5.5V18.5C23 19.6 22.1 20.5 21 20.5H3C1.9 20.5 1 19.6 1 18.5V5.5Z" fill="#c2e7ff"/>
           <path d="M23 5.5L12 13.5L1 5.5L3 3.5H21L23 5.5Z" fill="#4285f4"/>
         </svg>
@@ -41,16 +41,16 @@
     </div>
     <div class="topbar-center">
       <div class="search-bar" id="searchBar">
-        <span class="material-symbols-outlined search-icon">search</span>
+        <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
         <input type="text" id="searchInput" placeholder="Search emails" autocomplete="off" aria-label="Search emails">
       </div>
     </div>
     <div class="topbar-right">
       <button class="icon-btn" aria-label="Support">
-        <span class="material-symbols-outlined">help_outline</span>
+        <span class="material-symbols-outlined" aria-hidden="true">help_outline</span>
       </button>
       <button class="icon-btn" aria-label="Settings">
-        <span class="material-symbols-outlined">settings</span>
+        <span class="material-symbols-outlined" aria-hidden="true">settings</span>
       </button>
       <button class="avatar-btn" id="profileBtn" aria-label="Profile">J</button>
     </div>
@@ -65,25 +65,25 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <a href="contact.html" class="compose-btn">
-        <span class="material-symbols-outlined">edit</span>
+        <span class="material-symbols-outlined" aria-hidden="true">edit</span>
         <span class="compose-label">Compose</span>
       </a>
       <nav class="sidebar-nav">
         <a href="#" class="nav-item active" data-view="inbox">
-          <span class="material-symbols-outlined">inbox</span>
+          <span class="material-symbols-outlined" aria-hidden="true">inbox</span>
           <span class="nav-label">Inbox</span>
           <span class="nav-count" id="inboxCount"></span>
         </a>
         <a href="#" class="nav-item" data-view="starred">
-          <span class="material-symbols-outlined">star</span>
+          <span class="material-symbols-outlined" aria-hidden="true">star</span>
           <span class="nav-label">Starred</span>
         </a>
         <a href="#" class="nav-item" data-view="sent">
-          <span class="material-symbols-outlined">send</span>
+          <span class="material-symbols-outlined" aria-hidden="true">send</span>
           <span class="nav-label">Sent</span>
         </a>
         <a href="#" class="nav-item" data-view="drafts">
-          <span class="material-symbols-outlined">draft</span>
+          <span class="material-symbols-outlined" aria-hidden="true">draft</span>
           <span class="nav-label">Drafts</span>
         </a>
       </nav>
@@ -96,22 +96,22 @@
       <div class="inbox-view" id="inboxView">
         <!-- Inbox toolbar -->
         <div class="inbox-toolbar">
-          <label class="checkbox-wrap">
-            <input type="checkbox" id="selectAll">
-            <span class="material-symbols-outlined checkmark">check_box_outline_blank</span>
+          <label class="checkbox-wrap" aria-label="Select all">
+            <input type="checkbox" id="selectAll" aria-label="Select all">
+            <span class="material-symbols-outlined checkmark" aria-hidden="true">check_box_outline_blank</span>
           </label>
           <button class="icon-btn" aria-label="Refresh" onclick="location.reload()">
-            <span class="material-symbols-outlined">refresh</span>
+            <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
           </button>
           <button class="icon-btn" aria-label="More">
-            <span class="material-symbols-outlined">more_vert</span>
+            <span class="material-symbols-outlined" aria-hidden="true">more_vert</span>
           </button>
         </div>
 
         <!-- Starred Section -->
         <div class="email-section" id="starredSection">
-          <button class="section-header" id="starredToggle">
-            <span class="material-symbols-outlined section-caret">expand_more</span>
+          <button class="section-header" id="starredToggle" aria-expanded="true" aria-controls="starredList">
+            <span class="material-symbols-outlined section-caret" aria-hidden="true">expand_more</span>
             <span class="section-label">Starred</span>
           </button>
           <div class="section-body" id="starredList"></div>
@@ -134,15 +134,15 @@
 
         <!-- Everything Else Section -->
         <div class="email-section" id="everythingSection">
-          <button class="section-header" id="everythingToggle">
-            <span class="material-symbols-outlined section-caret">expand_more</span>
+          <button class="section-header" id="everythingToggle" aria-expanded="true" aria-controls="everythingList">
+            <span class="material-symbols-outlined section-caret" aria-hidden="true">expand_more</span>
             <span class="section-label">Everything else</span>
           </button>
           <div class="section-body" id="everythingList"></div>
         </div>
         <!-- No results -->
         <div class="no-results" id="noResults">
-          <span class="material-symbols-outlined">search_off</span>
+          <span class="material-symbols-outlined" aria-hidden="true">search_off</span>
           No emails match your search
         </div>
       </div>
@@ -151,16 +151,16 @@
       <div class="email-view" id="emailView" style="display:none">
         <div class="email-view-toolbar">
           <button class="icon-btn" id="backBtn" aria-label="Back to inbox">
-            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
           </button>
           <button class="icon-btn" aria-label="Archive">
-            <span class="material-symbols-outlined">archive</span>
+            <span class="material-symbols-outlined" aria-hidden="true">archive</span>
           </button>
           <button class="icon-btn" aria-label="Delete">
-            <span class="material-symbols-outlined">delete</span>
+            <span class="material-symbols-outlined" aria-hidden="true">delete</span>
           </button>
           <button class="icon-btn" aria-label="Mark as unread">
-            <span class="material-symbols-outlined">mark_email_unread</span>
+            <span class="material-symbols-outlined" aria-hidden="true">mark_email_unread</span>
           </button>
         </div>
         <div class="email-view-content">

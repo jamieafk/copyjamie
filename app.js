@@ -38,42 +38,47 @@ const emails = [
     avatarColor: '#34a853',
     subject: 'Pricing & Services',
 
-    preview: 'What I do, what it costs, and how we work together',
+    preview: 'Monthly retainers, sequence pricing, and how we work together',
     date: 'Feb 22',
     body: `
       <p>Here's the short version:</p>
-      <h2>What I write</h2>
-      <ul>
-        <li>Welcome sequences (3–7 emails)</li>
-        <li>Launch sequences & promos</li>
-        <li>Weekly newsletters</li>
-        <li>Re-engagement / winback campaigns</li>
-        <li>Cold outreach sequences</li>
-        <li>Landing page copy (when paired with email work)</li>
-      </ul>
-      <h2>What it costs</h2>
+      <h2>Monthly retainer — unlimited emails</h2>
+      <p>You send me your content calendar each month. I write every email on it. Unlimited sends, one flat rate per brand.</p>
       <table>
         <thead>
-          <tr><th>Service</th><th>Starting at</th></tr>
+          <tr><th>Brands</th><th>Monthly</th><th>Per brand</th></tr>
         </thead>
         <tbody>
-          <tr><td>Welcome sequence (5 emails)</td><td>$2,500</td></tr>
-          <tr><td>Launch sequence (7–10 emails)</td><td>$3,500</td></tr>
-          <tr><td>Newsletter (per issue)</td><td>$500</td></tr>
-          <tr><td>Re-engagement campaign</td><td>$1,500</td></tr>
-          <tr><td>Monthly retainer</td><td>$3,000/mo</td></tr>
+          <tr><td>1</td><td>$1,000/mo</td><td>$1,000</td></tr>
+          <tr><td>2</td><td>$1,800/mo</td><td>$900</td></tr>
+          <tr><td>3</td><td>$2,400/mo</td><td>$800</td></tr>
+          <tr><td>4</td><td>$3,000/mo</td><td>$750</td></tr>
+          <tr><td>5</td><td>$3,500/mo</td><td>$700</td></tr>
+          <tr><td>6+</td><td colspan="2">Custom pricing</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Prefer async?</strong> If you're happy communicating via email and Loom (no calls), take $200/mo off any tier.</p>
+      <h2>Email sequences — one-time projects</h2>
+      <p>Welcome flows, launch sequences, re-engagement campaigns, abandoned cart — anything that runs on autopilot.</p>
+      <table>
+        <thead>
+          <tr><th>Sequences</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 sequence</td><td>$500</td></tr>
+          <tr><td>Bundle of 5</td><td>$1,500 (save $1,000)</td></tr>
         </tbody>
       </table>
       <h2>How it works</h2>
       <ol>
-        <li><strong>Discovery call</strong> — 30 min, free. We talk about your audience, goals, and voice.</li>
-        <li><strong>Brief & deposit</strong> — I send a project brief. 50% deposit to kick off.</li>
+        <li><strong>Discovery call</strong> — 30 min, free. We talk about your brands, audience, and voice.</li>
+        <li><strong>Content calendar</strong> — You share next month's email plan. I write every email on it.</li>
         <li><strong>Drafts in 7 days</strong> — You get copy in Google Docs with annotations.</li>
-        <li><strong>One round of revisions</strong> — included in every project.</li>
+        <li><strong>One round of revisions</strong> — included with every email.</li>
         <li><strong>Final delivery</strong> — Clean copy, ready to paste into your ESP.</li>
       </ol>
       <p>Ready to talk?</p>
-      <a href="mailto:hey@jamiesutton.com" class="cta-btn">Book a Discovery Call</a>
+      <a href="contact.html" class="cta-btn">Book a Discovery Call</a>
       <div class="signature">
         <strong>Jamie</strong><br>
         Email Copywriter<br>
@@ -300,6 +305,13 @@ const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');
 const inboxCount = document.getElementById('inboxCount');
 
+// === Helpers ===
+function stripHTML(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  return tmp.textContent || '';
+}
+
 // === Render ===
 function renderInbox(filter = '') {
   const lowerFilter = filter.toLowerCase();
@@ -308,7 +320,7 @@ function renderInbox(filter = '') {
         e.subject.toLowerCase().includes(lowerFilter) ||
         e.sender.toLowerCase().includes(lowerFilter) ||
         e.preview.toLowerCase().includes(lowerFilter) ||
-        e.body.toLowerCase().includes(lowerFilter)
+        stripHTML(e.body).toLowerCase().includes(lowerFilter)
       )
     : emails;
 
@@ -345,14 +357,14 @@ function emailRowHTML(email) {
   const readClass = email.read ? '' : 'unread';
   const starredClass = email.starred ? 'starred' : '';
   return `
-    <div class="email-row ${readClass}" data-id="${email.id}" tabindex="0" role="link">
-      <label class="checkbox-wrap" onclick="event.stopPropagation()">
-        <input type="checkbox">
-        <span class="material-symbols-outlined checkmark">check_box_outline_blank</span>
+    <div class="email-row ${readClass}" data-id="${email.id}" tabindex="0" role="button" aria-label="${email.sender}: ${email.subject}">
+      <label class="checkbox-wrap" onclick="event.stopPropagation()" aria-label="Select">
+        <input type="checkbox" aria-label="Select email">
+        <span class="material-symbols-outlined checkmark" aria-hidden="true">check_box_outline_blank</span>
       </label>
       <div class="email-row-avatar" style="background:${email.avatarColor}">${email.sender.charAt(0).toUpperCase()}</div>
       <button class="star-btn ${starredClass}" onclick="event.stopPropagation(); toggleStar(${email.id})" aria-label="Star">
-        <span class="material-symbols-outlined">${email.starred ? 'star' : 'star_border'}</span>
+        <span class="material-symbols-outlined" aria-hidden="true">${email.starred ? 'star' : 'star_border'}</span>
       </button>
       <span class="email-sender">${email.sender}</span>
       <div class="email-content">
@@ -394,7 +406,7 @@ function animateIn(el) {
   el.style.animation = '';
 }
 
-function showInbox() {
+function showInbox(pushHistory = true) {
   currentView = 'inbox';
   currentEmailId = null;
   emailView.style.display = 'none';
@@ -403,9 +415,10 @@ function showInbox() {
   document.querySelector('.content').scrollTop = 0;
   // Don't auto-focus search — triggers keyboard + zoom on iOS
   document.title = 'CopyJamie — Inbox';
+  if (pushHistory) history.pushState({ view: 'inbox' }, '', window.location.pathname);
 }
 
-function showEmail(id) {
+function showEmail(id, pushHistory = true) {
   currentView = 'email';
   currentEmailId = id;
 
@@ -422,7 +435,17 @@ function showEmail(id) {
   document.querySelector('.content').scrollTop = 0;
   document.getElementById('backBtn').focus();
   document.title = `${email.subject} — CopyJamie`;
+  if (pushHistory) history.pushState({ view: 'email', id: id }, '', `#email-${id}`);
 }
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.view === 'email' && e.state.id) {
+    showEmail(e.state.id, false);
+  } else {
+    showInbox(false);
+  }
+});
 
 // === Event Listeners ===
 
@@ -448,10 +471,16 @@ document.querySelector('.content').addEventListener('keydown', (e) => {
 // Back button
 backBtn.addEventListener('click', showInbox);
 
-// Keyboard: Escape to go back
+// Keyboard: Escape to go back or close sidebar
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && currentView === 'email') {
-    showInbox();
+  if (e.key === 'Escape') {
+    if (sidebar.classList.contains('mobile-open')) {
+      sidebar.classList.remove('mobile-open');
+      sidebarBackdrop.classList.remove('visible');
+      hamburger.focus();
+    } else if (currentView === 'email') {
+      showInbox();
+    }
   }
 });
 
@@ -506,12 +535,10 @@ sidebarBackdrop.addEventListener('click', () => {
   sidebarBackdrop.classList.remove('visible');
 });
 
-// Sidebar nav (visual only — no separate views for starred/sent/etc.)
+// Sidebar nav — only Inbox is functional; others close mobile drawer and return to inbox
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', (e) => {
     e.preventDefault();
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    item.classList.add('active');
     // Close mobile drawer
     sidebar.classList.remove('mobile-open');
     sidebarBackdrop.classList.remove('visible');
@@ -532,4 +559,19 @@ emailAdClose.addEventListener('click', (e) => {
 });
 
 // === Init ===
-renderInbox();
+// Deep link: load email if URL has #email-{id}
+const hashMatch = window.location.hash.match(/^#email-(\d+)$/);
+if (hashMatch) {
+  const emailId = parseInt(hashMatch[1]);
+  if (emails.find(e => e.id === emailId)) {
+    renderInbox();
+    showEmail(emailId, false);
+    history.replaceState({ view: 'email', id: emailId }, '', `#email-${emailId}`);
+  } else {
+    history.replaceState({ view: 'inbox' }, '', window.location.pathname);
+    renderInbox();
+  }
+} else {
+  history.replaceState({ view: 'inbox' }, '', window.location.pathname);
+  renderInbox();
+}

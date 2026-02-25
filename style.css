@@ -12,7 +12,7 @@
   --surface: #fff;
   --text-primary: #1f1f1f;
   --text-secondary: #5f6368;
-  --text-light: #80868b;
+  --text-light: #6d7175;
   --border: #e0e0e0;
   --hover: #edf2fc;
   --active-nav: #d3e3fd;
@@ -27,7 +27,6 @@
   --section-divider: #dadce0;
   --search-bg: #eaf1fb;
   --search-focus-bg: #fff;
-  --read-bg: transparent;
   --unread-bg: #fff;
   --font-body: 'Roboto', sans-serif;
   --font-display: 'Google Sans', 'Roboto', sans-serif;
@@ -581,7 +580,7 @@ html, body {
   font-size: 10px;
   font-weight: 700;
   color: #fff;
-  background: #34a853;
+  background: #1e7e34;
   border-radius: 3px;
   padding: 1px 5px;
   letter-spacing: 0.3px;

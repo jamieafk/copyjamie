@@ -17,6 +17,18 @@
       overflow: auto;
     }
 
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .compose-page {
       max-width: 680px;
       margin: 0 auto;
@@ -105,7 +117,8 @@
       margin-bottom: 20px;
     }
 
-    .form-group label {
+    .form-group label,
+    .form-group legend {
       display: block;
       font-size: 12px;
       font-weight: 500;
@@ -113,6 +126,11 @@
       text-transform: uppercase;
       letter-spacing: 0.3px;
       margin-bottom: 6px;
+      padding: 0;
+    }
+
+    fieldset.form-group {
+      border: none;
     }
 
     .required {
@@ -186,6 +204,10 @@
       margin-bottom: 0;
     }
 
+    legend.label-row {
+      width: 100%;
+    }
+
     .discount-badge {
       display: none;
       align-items: center;
@@ -248,6 +270,11 @@
       font-size: 18px;
     }
 
+    .reply-time {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -295,6 +322,229 @@
       line-height: 1.6;
     }
 
+    /* Inline cost comparison */
+    .cost-compare-inline {
+      margin-bottom: 20px;
+    }
+
+    .cost-compare-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .cost-col {
+      text-align: center;
+      padding: 14px 10px;
+      border-radius: 8px;
+    }
+
+    .cost-col--hire {
+      background: #fce8e6;
+    }
+
+    .cost-col--jamie {
+      background: #e6f4ea;
+    }
+
+    .cost-col-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .cost-col-price {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .cost-col-price span {
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    .cost-col--hire .cost-col-price {
+      color: #c5221f;
+    }
+
+    .cost-col--jamie .cost-col-price {
+      color: #137333;
+    }
+
+    /* Segmented controls */
+    .seg-control {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .seg-control input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .seg-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+      text-align: center;
+    }
+
+    .seg-pill:hover {
+      background: #e8eaed;
+    }
+
+    .seg-control input[type="radio"]:checked + .seg-pill {
+      background: #d3e3fd;
+      border-color: #4285f4;
+      color: #1967d2;
+      font-weight: 500;
+    }
+
+    .seg-control input[type="radio"]:focus-visible + .seg-pill {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .seg-sub {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .seg-price-note {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+
+    .seg-price-note strong {
+      color: var(--text-primary);
+    }
+
+    .cost-col-points {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      text-align: left;
+    }
+
+    .cost-col-points li {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text-secondary);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .cost-col-points li::before {
+      position: absolute;
+      left: 0;
+      font-size: 11px;
+    }
+
+    .cost-col--jamie .cost-col-points li::before {
+      content: "\2713";
+      color: #137333;
+    }
+
+    .cost-col--hire .cost-col-points li::before {
+      content: "\2717";
+      color: #c5221f;
+    }
+
+    /* Collapsible comparison toggle (mobile) */
+    .compare-toggle {
+      display: none;
+      width: 100%;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: left;
+      margin-bottom: 12px;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .compare-toggle .material-symbols-outlined {
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .compare-toggle.open .material-symbols-outlined {
+      transform: rotate(180deg);
+    }
+
+    /* Live summary */
+    .live-summary {
+      display: none;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 10px 16px;
+      background: #f8f9fa;
+      border-top: 1px solid var(--border);
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .live-summary.visible {
+      display: flex;
+    }
+
+    .live-summary-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .live-summary-item strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .live-summary-dot {
+      color: var(--border);
+      margin: 0 2px;
+    }
+
+    /* Social proof */
+    .social-proof {
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: var(--text-light);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+    }
+
+    .social-proof strong {
+      font-style: normal;
+      color: var(--text-secondary);
+    }
+
     @media (max-width: 768px) {
       .compose-page {
         padding: 72px 8px 32px;
@@ -309,6 +559,18 @@
         grid-template-columns: 1fr;
         gap: 0;
       }
+      .cost-col-price {
+        font-size: 22px;
+      }
+      .compare-toggle {
+        display: inline-flex;
+      }
+      .cost-compare-cols {
+        display: none;
+      }
+      .cost-compare-inline.open .cost-compare-cols {
+        display: grid;
+      }
     }
   </style>
 </head>
@@ -318,10 +580,10 @@
   <header class="topbar">
     <div class="topbar-left">
       <a href="index.html" class="icon-btn" aria-label="Back to inbox">
-        <span class="material-symbols-outlined">arrow_back</span>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
       </a>
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
           <path d="M1 5.5L12 13.5L23 5.5V18.5C23 19.6 22.1 20.5 21 20.5H3C1.9 20.5 1 19.6 1 18.5V5.5Z" fill="#c2e7ff"/>
           <path d="M23 5.5L12 13.5L1 5.5L3 3.5H21L23 5.5Z" fill="#4285f4"/>
         </svg>
@@ -333,12 +595,14 @@
     </div>
   </header>
 
-  <div class="compose-page">
+  <main class="compose-page">
+    <h1 class="sr-only">Contact Jamie — Email Copywriter</h1>
+
     <div class="compose-card">
 
       <div class="compose-header">
         <span>New Message</span>
-        <a href="index.html" aria-label="Close"><span class="material-symbols-outlined">close</span></a>
+        <a href="index.html" aria-label="Close"><span class="material-symbols-outlined" aria-hidden="true">close</span></a>
       </div>
 
       <div class="compose-fields">
@@ -356,79 +620,122 @@
         <div class="compose-form">
           <p>Hey Jamie — I liked what I saw. Here's a bit about what I'm looking for:</p>
 
-          <div class="form-group">
-            <label for="name">Your name <span class="required">*</span></label>
-            <input type="text" id="name" name="name" placeholder="First and last" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Your email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required>
-          </div>
-
-          <div class="form-group">
-            <label for="website">Business website <span class="required">*</span></label>
-            <input type="text" id="website" name="website" placeholder="https://yourcompany.com" required>
+          <div class="cost-compare-inline" id="costCompare">
+            <button type="button" class="compare-toggle" id="compareToggle">
+              <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+              Compare working with me to hiring another employee 👔
+            </button>
+            <div class="cost-compare-cols">
+              <div class="cost-col cost-col--hire">
+                <div class="cost-col-label">Hire in-house</div>
+                <div class="cost-col-price">$4,500+<span>/mo</span></div>
+                <ul class="cost-col-points">
+                  <li>Not especially good at copywriting</li>
+                  <li>New to email marketing</li>
+                  <li>Expensive onboarding process</li>
+                  <li>$4,500 per month is below average</li>
+                </ul>
+              </div>
+              <div class="cost-col cost-col--jamie">
+                <div class="cost-col-label">Outsource to Jamie</div>
+                <div class="cost-col-price">$1,000<span>/mo</span></div>
+                <ul class="cost-col-points">
+                  <li>10 years of copywriting experience</li>
+                  <li>Agency experience, brand-side experience</li>
+                  <li>Onboarded once you provide style docs</li>
+                  <li>Save thousands per month on an over-qualified copywriter</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="brands">Brands you want copy for <span class="required">*</span></label>
-              <select id="brands" name="brands" required>
-                <option value="" disabled selected>How many?</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6-plus">More than 5</option>
-              </select>
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="First and last" required>
             </div>
 
             <div class="form-group">
-              <label for="comms">Communication style <span class="required">*</span></label>
-              <select id="comms" name="comms" required>
-                <option value="" disabled selected>Your preference</option>
-                <option value="async">Async only (email / Loom)</option>
-                <option value="mix">Mix of async + calls</option>
-                <option value="calls">Prefer live calls</option>
-              </select>
+              <label for="email">Your email</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required>
             </div>
           </div>
 
           <div class="form-group">
-            <div class="label-row">
-              <label for="retainer">Monthly budget <span class="required">*</span></label>
-              <span class="discount-badge" id="discountBadge">
-                <span class="material-symbols-outlined">sell</span>
-                15% OFF — ASYNC PRICING
-              </span>
+            <label for="website">Your agency's website</label>
+            <input type="text" id="website" name="website" placeholder="https://yourcompany.com" required>
+          </div>
+
+          <fieldset class="form-group">
+            <legend>How many brands do you need copy for?</legend>
+            <div class="seg-control" id="brandsControl">
+              <input type="radio" name="brands" id="brand1" value="1" required>
+              <label for="brand1" class="seg-pill">1</label>
+              <input type="radio" name="brands" id="brand2" value="2">
+              <label for="brand2" class="seg-pill">2</label>
+              <input type="radio" name="brands" id="brand3" value="3">
+              <label for="brand3" class="seg-pill">3</label>
+              <input type="radio" name="brands" id="brand4" value="4">
+              <label for="brand4" class="seg-pill">4</label>
+              <input type="radio" name="brands" id="brand5" value="5">
+              <label for="brand5" class="seg-pill">5</label>
+              <input type="radio" name="brands" id="brand6" value="6-plus">
+              <label for="brand6" class="seg-pill">6+</label>
             </div>
-            <select id="retainer" name="retainer" required>
-              <option value="" disabled selected>Select a tier</option>
-              <option value="1000" data-base="1000">$1,000/mo — Starter</option>
-              <option value="2000" data-base="2000">$2,000/mo — Growth</option>
-              <option value="3000" data-base="3000">$3,000/mo — Full Service</option>
-              <option value="custom" data-base="custom">Custom package</option>
+            <div class="seg-price-note" id="brandPrice"></div>
+          </fieldset>
+
+          <div class="form-group">
+            <label for="sequences">Do you need email sequences written?</label>
+            <select id="sequences" name="sequences">
+              <option value="none" selected>No sequences needed right now</option>
+              <option value="1">1 sequence — $500</option>
+              <option value="2">2 sequences — $1,000</option>
+              <option value="3">3 sequences — $1,250</option>
+              <option value="4">4 sequences — $1,400</option>
+              <option value="5">5 sequences — $1,500 (save $1,000)</option>
             </select>
           </div>
 
+          <fieldset class="form-group">
+            <legend class="label-row">
+              <span>Can we communicate via Loom?</span>
+              <span class="discount-badge" id="discountBadge">
+                <span class="material-symbols-outlined" aria-hidden="true">sell</span>
+                $200/MO OFF
+              </span>
+            </legend>
+            <div class="seg-control" id="commsControl">
+              <input type="radio" name="comms" id="commsAsync" value="async" required>
+              <label for="commsAsync" class="seg-pill">Async only<span class="seg-sub">Save $200/mo</span></label>
+              <input type="radio" name="comms" id="commsCalls" value="calls">
+              <label for="commsCalls" class="seg-pill">1 call per month<span class="seg-sub">+ async between calls</span></label>
+            </div>
+          </fieldset>
+
           <div class="form-group">
-            <label for="details">Tell me about what you're looking for <span class="required">*</span></label>
-            <textarea id="details" name="details" placeholder="What does your business do? Who's your audience? What's not working with your current emails?" required></textarea>
+            <label for="details">Tell me more about what you're looking for in a copywriter</label>
+            <textarea id="details" name="details" placeholder="Your business, your audience, and what you need help with" required></textarea>
           </div>
         </div>
 
+        <div class="live-summary" id="liveSummary"></div>
+
         <div class="compose-actions">
           <button type="submit" class="send-btn">
-            <span class="material-symbols-outlined">send</span>
+            <span class="material-symbols-outlined" aria-hidden="true">send</span>
             Send
           </button>
+          <span class="reply-time">I'll reply within 24 hours</span>
         </div>
       </form>
 
+      <div class="social-proof">
+        <strong>10 years writing emails</strong> — agency-side, brand-side, and freelance. Previously at [Agency Name].
+      </div>
+
       <div class="sent-confirmation" id="sentConfirmation">
-        <span class="material-symbols-outlined">check_circle</span>
+        <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
         <h2>Message sent</h2>
         <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
       </div>
@@ -436,84 +743,81 @@
     </div>
 
     <a href="index.html" class="back-link">
-      <span class="material-symbols-outlined">arrow_back</span>
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
       Back to inbox
     </a>
-  </div>
+  </main>
 
   <script>
-    const brandsEl = document.getElementById('brands');
-    const commsEl = document.getElementById('comms');
-    const retainerEl = document.getElementById('retainer');
     const discountBadge = document.getElementById('discountBadge');
+    const brandPriceNote = document.getElementById('brandPrice');
+    const liveSummary = document.getElementById('liveSummary');
 
-    const baseTiers = [
-      { value: '1000', base: 1000, label: 'Starter', maxBrands: 2 },
-      { value: '2000', base: 2000, label: 'Growth', maxBrands: 3 },
-      { value: '3000', base: 3000, label: 'Full Service', maxBrands: 5 },
-      { value: 'custom', base: null, label: 'Custom package' }
-    ];
+    const brandPricing = {
+      '1': '$1,000/mo',
+      '2': '$1,800/mo',
+      '3': '$2,400/mo',
+      '4': '$3,000/mo',
+      '5': '$3,500/mo',
+      '6-plus': 'Custom pricing'
+    };
 
-    function getBrandCount() {
-      const v = brandsEl.value;
-      if (v === '6-plus') return 6;
-      return parseInt(v) || 0;
+    const brandLabels = {
+      '1': '1 brand',
+      '2': '2 brands',
+      '3': '3 brands',
+      '4': '4 brands',
+      '5': '5 brands',
+      '6-plus': '6+ brands'
+    };
+
+    function getSelectedRadio(name) {
+      const el = document.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : null;
     }
 
-    function isAsync() {
-      return commsEl.value === 'async';
-    }
+    function updateSummary() {
+      var parts = [];
+      var brand = getSelectedRadio('brands');
+      var comms = getSelectedRadio('comms');
+      var seq = document.getElementById('sequences').value;
 
-    function updateRetainer() {
-      const brandCount = getBrandCount();
-      const async = isAsync();
-      const currentValue = retainerEl.value;
+      if (brand) parts.push('<span class="live-summary-item"><strong>' + brandLabels[brand] + '</strong></span>');
+      if (brand && brand !== '6-plus') parts.push('<span class="live-summary-item"><strong>' + brandPricing[brand] + '</strong></span>');
+      if (comms === 'async') parts.push('<span class="live-summary-item"><strong>Async</strong> (-$200)</span>');
+      if (comms === 'calls') parts.push('<span class="live-summary-item"><strong>1 call/mo</strong></span>');
+      if (seq && seq !== 'none') parts.push('<span class="live-summary-item"><strong>' + seq + ' sequence' + (seq === '1' ? '' : 's') + '</strong></span>');
 
-      // Show/hide discount badge
-      discountBadge.classList.toggle('visible', async);
-
-      // Rebuild options
-      retainerEl.innerHTML = '<option value="" disabled>Select a tier</option>';
-
-      baseTiers.forEach(tier => {
-        const opt = document.createElement('option');
-
-        if (tier.base === null) {
-          // Custom — always available
-          opt.value = 'custom';
-          opt.textContent = 'Custom package';
-        } else {
-          const tooManyBrands = tier.maxBrands && brandCount > tier.maxBrands;
-
-          if (tooManyBrands) {
-            opt.value = tier.value;
-            opt.textContent = `$${tier.base.toLocaleString()}/mo — ${tier.label} (${brandCount > 3 ? '4+ brands — ' : ''}requires higher tier)`;
-            opt.disabled = true;
-          } else if (async) {
-            const discounted = Math.round(tier.base * 0.85);
-            opt.value = discounted;
-            opt.textContent = `$${discounted.toLocaleString()}/mo — ${tier.label} (was $${tier.base.toLocaleString()})`;
-          } else {
-            opt.value = tier.value;
-            opt.textContent = `$${tier.base.toLocaleString()}/mo — ${tier.label}`;
-          }
-        }
-
-        retainerEl.appendChild(opt);
-      });
-
-      // Restore selection if still valid
-      const match = retainerEl.querySelector(`option[value="${currentValue}"]:not(:disabled)`);
-      if (match) {
-        retainerEl.value = currentValue;
+      if (parts.length > 0) {
+        liveSummary.innerHTML = parts.join('<span class="live-summary-dot">&middot;</span>');
+        liveSummary.classList.add('visible');
       } else {
-        retainerEl.value = '';
-        retainerEl.querySelector('option[disabled]').selected = true;
+        liveSummary.classList.remove('visible');
       }
     }
 
-    brandsEl.addEventListener('change', updateRetainer);
-    commsEl.addEventListener('change', updateRetainer);
+    document.getElementById('brandsControl').addEventListener('change', function(e) {
+      var val = e.target.value;
+      brandPriceNote.innerHTML = '<strong>' + brandPricing[val] + '</strong> — unlimited monthly campaign emails';
+      updateSummary();
+    });
+
+    document.getElementById('commsControl').addEventListener('change', function(e) {
+      discountBadge.classList.toggle('visible', e.target.value === 'async');
+      updateSummary();
+    });
+
+    document.getElementById('sequences').addEventListener('change', updateSummary);
+
+    // Collapsible comparison (mobile)
+    document.getElementById('compareToggle').addEventListener('click', function() {
+      var wrapper = document.getElementById('costCompare');
+      var open = wrapper.classList.toggle('open');
+      this.classList.toggle('open', open);
+      this.innerHTML = open
+        ? '<span class="material-symbols-outlined" aria-hidden="true">expand_less</span> Hide comparison'
+        : '<span class="material-symbols-outlined" aria-hidden="true">expand_more</span> Compare working with me to hiring another employee 👔';
+    });
 
     // Submit via Formspree (fetch so we stay on page)
     document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -531,6 +835,8 @@
         if (response.ok) {
           form.style.display = 'none';
           document.querySelector('.compose-fields').style.display = 'none';
+          var socialProof = document.querySelector('.social-proof');
+          if (socialProof) socialProof.style.display = 'none';
           document.getElementById('sentConfirmation').style.display = 'block';
         } else {
           btn.disabled = false;
