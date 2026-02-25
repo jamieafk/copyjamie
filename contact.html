@@ -426,9 +426,12 @@
       outline-offset: 2px;
     }
 
-    /* Brand number pills need min-width since they're single characters */
+    /* Brand number pills: fixed size circle so text centers perfectly */
     #brandsControl .seg-pill {
-      min-width: 44px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: 50%;
     }
 
     .seg-sub {
@@ -773,6 +776,14 @@
       '6-plus': 'Custom pricing'
     };
 
+    const brandPricingNum = {
+      '1': 1000, '2': 1800, '3': 2400, '4': 3000, '5': 3500
+    };
+
+    const seqPricingNum = {
+      '1': 500, '2': 1000, '3': 1250, '4': 1400, '5': 1500
+    };
+
     const brandLabels = {
       '1': '1 brand',
       '2': '2 brands',
@@ -787,24 +798,51 @@
       return el ? el.value : null;
     }
 
+    function fmt(n) {
+      return '$' + n.toLocaleString('en-US');
+    }
+
+    var seqSavings = { '3': 250, '4': 600, '5': 1000 };
+
     function updateSummary() {
-      var parts = [];
       var brand = getSelectedRadio('brands');
       var comms = getSelectedRadio('comms');
       var seq = document.getElementById('sequences').value;
 
-      if (brand) parts.push('<span class="live-summary-item"><strong>' + brandLabels[brand] + '</strong></span>');
-      if (brand && brand !== '6-plus') parts.push('<span class="live-summary-item"><strong>' + brandPricing[brand] + '</strong></span>');
-      if (comms === 'async') parts.push('<span class="live-summary-item"><strong>Async</strong> (-$200)</span>');
-      if (comms === 'calls') parts.push('<span class="live-summary-item"><strong>1 call/mo</strong></span>');
-      if (seq && seq !== 'none') parts.push('<span class="live-summary-item"><strong>' + seq + ' sequence' + (seq === '1' ? '' : 's') + '</strong></span>');
-
-      if (parts.length > 0) {
-        liveSummary.innerHTML = parts.join('<span class="live-summary-dot">&middot;</span>');
-        liveSummary.classList.add('visible');
-      } else {
+      if (!brand) {
         liveSummary.classList.remove('visible');
+        return;
       }
+
+      var isCustom = brand === '6-plus';
+      var hasSeq = seq && seq !== 'none';
+      var lines = [];
+
+      // Monthly line
+      if (isCustom) {
+        var ml = 'Monthly: <strong>Custom pricing</strong> for 6+ brands';
+        if (!hasSeq) ml = '<strong>Custom pricing</strong> for 6+ brands — let\u2019s discuss on the call';
+        lines.push(ml);
+      } else {
+        var monthly = brandPricingNum[brand];
+        var asyncApplied = comms === 'async';
+        if (asyncApplied) monthly -= 200;
+        var ml = hasSeq ? 'Monthly: ' : '';
+        ml += '<strong>' + fmt(monthly) + '/mo</strong> for ' + brandLabels[brand] + ' (monthly campaigns)';
+        if (asyncApplied) ml += ' — async discount applied';
+        lines.push(ml);
+      }
+
+      // One-time line
+      if (hasSeq) {
+        var seqCost = seqPricingNum[seq];
+        var sl = 'One-time: <strong>' + fmt(seqCost) + '</strong> for ' + seq + ' sequence' + (seq === '1' ? '' : 's');
+        if (seqSavings[seq]) sl += ' (save ' + fmt(seqSavings[seq]) + ')';
+        lines.push(sl);
+      }
+
+      liveSummary.innerHTML = lines.join('<br>');
+      liveSummary.classList.add('visible');
     }
 
     document.getElementById('brandsControl').addEventListener('change', function(e) {
