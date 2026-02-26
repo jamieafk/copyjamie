@@ -44,31 +44,12 @@ const emails = [
       <p>Here's the short version:</p>
       <h2>Monthly retainer — unlimited emails</h2>
       <p>You send me your content calendar each month. I write every email on it. Unlimited sends, one flat rate per brand.</p>
-      <table>
-        <thead>
-          <tr><th>Brands</th><th>Monthly</th><th>Per brand</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>$1,000/mo</td><td>$1,000</td></tr>
-          <tr><td>2</td><td>$1,800/mo</td><td>$900</td></tr>
-          <tr><td>3</td><td>$2,400/mo</td><td>$800</td></tr>
-          <tr><td>4</td><td>$3,000/mo</td><td>$750</td></tr>
-          <tr><td>5</td><td>$3,500/mo</td><td>$700</td></tr>
-          <tr><td>6+</td><td colspan="2">Custom pricing</td></tr>
-        </tbody>
-      </table>
-      <p><strong>Prefer async?</strong> If you're happy communicating via email and Loom (no calls), take $200/mo off any tier.</p>
+      <p><strong>$1,000/brand/mo</strong> — unlimited monthly campaign emails. Need 3 brands? That's $3,000/mo. Simple math, no tiers to decode.</p>
+      <p>6+ brands? Let's talk custom pricing.</p>
+      <p><strong>Prefer async?</strong> If you're happy communicating via email and Loom (no calls), take $200/mo off.</p>
       <h2>Email sequences — one-time projects</h2>
       <p>Welcome flows, launch sequences, re-engagement campaigns, abandoned cart — anything that runs on autopilot.</p>
-      <table>
-        <thead>
-          <tr><th>Sequences</th><th>Price</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1 sequence</td><td>$500</td></tr>
-          <tr><td>Bundle of 5</td><td>$1,500 (save $1,000)</td></tr>
-        </tbody>
-      </table>
+      <p><strong>$500 per sequence.</strong> Need 3? That's $1,500. No bundles, no minimums.</p>
       <h2>How it works</h2>
       <ol>
         <li><strong>Discovery call</strong> — 30 min, free. We talk about your brands, audience, and voice.</li>

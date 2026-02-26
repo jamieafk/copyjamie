@@ -185,6 +185,31 @@
       color: var(--text-light);
     }
 
+    .form-section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      background: #f8f9fa;
+    }
+
+    .form-section .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-section-label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      background: #e8eaed;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -232,23 +257,25 @@
 
     .compose-actions {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 8px;
       padding: 12px 16px;
-      border-top: 1px solid var(--border);
     }
 
     .send-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
+      width: 100%;
       background: var(--blue);
       color: #fff;
       border: none;
-      border-radius: 18px;
-      padding: 8px 20px;
+      border-radius: 8px;
+      padding: 12px 24px;
       font-family: var(--font-display);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       cursor: pointer;
       text-decoration: none;
@@ -688,7 +715,7 @@
               </div>
               <div class="cost-col cost-col--jamie">
                 <div class="cost-col-label">Outsource to Jamie</div>
-                <div class="cost-col-price">$1,000<span>/mo</span></div>
+                <div class="cost-col-price">$1,000<span>/mo per brand</span></div>
                 <ul class="cost-col-points">
                   <li>10 years of copywriting experience</li>
                   <li>Agency experience, brand-side experience</li>
@@ -699,69 +726,67 @@
             </div>
           </div>
 
-          <div class="form-row">
+          <div class="form-section">
+            <div class="form-section-label">About you</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" placeholder="First and last" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Your email</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+              </div>
+            </div>
             <div class="form-group">
-              <label for="name">Your name</label>
-              <input type="text" id="name" name="name" placeholder="First and last" required>
-            </div>
-
-            <div class="form-group">
-              <label for="email">Your email</label>
-              <input type="email" id="email" name="email" placeholder="you@company.com" required>
+              <label for="website">Your agency's website</label>
+              <input type="text" id="website" name="website" placeholder="https://yourcompany.com" required>
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="website">Your agency's website</label>
-            <input type="text" id="website" name="website" placeholder="https://yourcompany.com" required>
-          </div>
-
-          <fieldset class="form-group">
-            <legend>How many brands do you need copy for?</legend>
-            <div class="seg-price-note" id="brandPrice"></div>
-            <div class="seg-control" id="brandsControl">
-              <input type="radio" name="brands" id="brand1" value="1" required>
-              <label for="brand1" class="seg-pill">1</label>
-              <input type="radio" name="brands" id="brand2" value="2">
-              <label for="brand2" class="seg-pill">2</label>
-              <input type="radio" name="brands" id="brand3" value="3">
-              <label for="brand3" class="seg-pill">3</label>
-              <input type="radio" name="brands" id="brand4" value="4">
-              <label for="brand4" class="seg-pill">4</label>
-              <input type="radio" name="brands" id="brand5" value="5">
-              <label for="brand5" class="seg-pill">5</label>
-              <input type="radio" name="brands" id="brand6" value="6-plus">
-              <label for="brand6" class="seg-pill">6+</label>
+          <div class="form-section">
+            <div class="form-section-label">Scope & pricing</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="brands">Brands</label>
+                <select id="brands" name="brands" required>
+                  <option value="" disabled selected>Select brands</option>
+                  <option value="1">1 brand — $1,000/mo</option>
+                  <option value="2">2 brands — $2,000/mo</option>
+                  <option value="3">3 brands — $3,000/mo</option>
+                  <option value="4">4 brands — $4,000/mo</option>
+                  <option value="5">5 brands — $5,000/mo</option>
+                  <option value="6-plus">6+ brands — Custom pricing</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="sequences">Sequences</label>
+                <select id="sequences" name="sequences">
+                  <option value="none" selected>None right now</option>
+                  <option value="1">1 sequence — $500</option>
+                  <option value="2">2 sequences — $1,000</option>
+                  <option value="3">3 sequences — $1,500</option>
+                  <option value="4">4 sequences — $2,000</option>
+                  <option value="5">5 sequences — $2,500</option>
+                </select>
+              </div>
             </div>
-          </fieldset>
-
-          <div class="form-group">
-            <label for="sequences">Do you need email sequences written?</label>
-            <select id="sequences" name="sequences">
-              <option value="none" selected>No sequences needed right now</option>
-              <option value="1">1 sequence — $500</option>
-              <option value="2">2 sequences — $1,000</option>
-              <option value="3">3 sequences — $1,250</option>
-              <option value="4">4 sequences — $1,400</option>
-              <option value="5">5 sequences — $1,500 (save $1,000)</option>
-            </select>
+            <fieldset class="form-group">
+              <legend class="label-row">
+                <span>Communication</span>
+                <span class="discount-badge" id="discountBadge">
+                  <span class="material-symbols-outlined" aria-hidden="true">sell</span>
+                  $200/MO OFF
+                </span>
+              </legend>
+              <div class="seg-control" id="commsControl">
+                <input type="radio" name="comms" id="commsAsync" value="async" required>
+                <label for="commsAsync" class="seg-pill">Async only<span class="seg-sub">Save $200/mo</span></label>
+                <input type="radio" name="comms" id="commsCalls" value="calls">
+                <label for="commsCalls" class="seg-pill">1 call per month<span class="seg-sub">+ async between calls</span></label>
+              </div>
+            </fieldset>
           </div>
-
-          <fieldset class="form-group">
-            <legend class="label-row">
-              <span>Can we communicate via Loom?</span>
-              <span class="discount-badge" id="discountBadge">
-                <span class="material-symbols-outlined" aria-hidden="true">sell</span>
-                $200/MO OFF
-              </span>
-            </legend>
-            <div class="seg-control" id="commsControl">
-              <input type="radio" name="comms" id="commsAsync" value="async" required>
-              <label for="commsAsync" class="seg-pill">Async only<span class="seg-sub">Save $200/mo</span></label>
-              <input type="radio" name="comms" id="commsCalls" value="calls">
-              <label for="commsCalls" class="seg-pill">1 call per month<span class="seg-sub">+ async between calls</span></label>
-            </div>
-          </fieldset>
 
           <div class="form-group">
             <label for="details">Tell me more about what you're looking for in a copywriter</label>
@@ -800,24 +825,23 @@
 
   <script>
     const discountBadge = document.getElementById('discountBadge');
-    const brandPriceNote = document.getElementById('brandPrice');
     const liveSummary = document.getElementById('liveSummary');
 
     const brandPricing = {
       '1': '$1,000/mo',
-      '2': '$1,800/mo',
-      '3': '$2,400/mo',
-      '4': '$3,000/mo',
-      '5': '$3,500/mo',
+      '2': '$2,000/mo',
+      '3': '$3,000/mo',
+      '4': '$4,000/mo',
+      '5': '$5,000/mo',
       '6-plus': 'Custom pricing'
     };
 
     const brandPricingNum = {
-      '1': 1000, '2': 1800, '3': 2400, '4': 3000, '5': 3500
+      '1': 1000, '2': 2000, '3': 3000, '4': 4000, '5': 5000
     };
 
     const seqPricingNum = {
-      '1': 500, '2': 1000, '3': 1250, '4': 1400, '5': 1500
+      '1': 500, '2': 1000, '3': 1500, '4': 2000, '5': 2500
     };
 
     const brandLabels = {
@@ -838,10 +862,8 @@
       return '$' + n.toLocaleString('en-US');
     }
 
-    var seqSavings = { '3': 250, '4': 600, '5': 1000 };
-
     function updateSummary() {
-      var brand = getSelectedRadio('brands');
+      var brand = document.getElementById('brands').value || null;
       var comms = getSelectedRadio('comms');
       var seq = document.getElementById('sequences').value;
 
@@ -875,7 +897,6 @@
       if (hasSeq) {
         var seqCost = seqPricingNum[seq];
         var sl = 'One-time cost: <strong>' + fmt(seqCost) + '</strong> for ' + seq + ' sequence' + (seq === '1' ? '' : 's');
-        if (seqSavings[seq]) sl += ' <span class="summary-savings">(save ' + fmt(seqSavings[seq]) + ')</span>';
         html += summaryLine('\uD83D\uDCCB', sl);
       }
 
@@ -883,11 +904,7 @@
       liveSummary.classList.add('visible');
     }
 
-    document.getElementById('brandsControl').addEventListener('change', function(e) {
-      var val = e.target.value;
-      brandPriceNote.innerHTML = '<strong>' + brandPricing[val] + '</strong> — unlimited monthly campaign emails for ' + brandLabels[val];
-      updateSummary();
-    });
+    document.getElementById('brands').addEventListener('change', updateSummary);
 
     document.getElementById('commsControl').addEventListener('change', function(e) {
       discountBadge.classList.toggle('visible', e.target.value === 'async');
