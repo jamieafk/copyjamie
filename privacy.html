@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — CopyJamie</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    html, body {
+      overflow: auto;
+    }
+
+    .compose-page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: calc(var(--topbar-height) + 24px) 16px 48px;
+    }
+
+    .prose h1 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+
+    .prose .last-updated {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    .prose h2 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 24px 0 8px;
+    }
+
+    .prose p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0 0 12px;
+    }
+
+    .prose ul {
+      padding-left: 20px;
+      margin: 0 0 12px;
+    }
+
+    .prose li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      transition: background 0.15s;
+      margin-top: 16px;
+    }
+
+    .back-link:hover {
+      background: var(--hover);
+    }
+
+    .back-link .material-symbols-outlined {
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .compose-page {
+        padding: 72px 8px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="./" class="icon-btn" aria-label="Back to inbox">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      </a>
+      <a href="./" class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+          <path d="M1 5.5L12 13.5L23 5.5V18.5C23 19.6 22.1 20.5 21 20.5H3C1.9 20.5 1 19.6 1 18.5V5.5Z" fill="#c2e7ff"/>
+          <path d="M23 5.5L12 13.5L1 5.5L3 3.5H21L23 5.5Z" fill="#4285f4"/>
+        </svg>
+        <span class="logo-text">CopyJamie</span>
+      </a>
+    </div>
+    <div class="topbar-right">
+      <button class="avatar-btn" aria-label="Profile">J</button>
+    </div>
+  </header>
+
+  <main class="compose-page">
+    <div class="prose">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: 1 March 2025</p>
+
+      <h2>Information We Collect</h2>
+      <p>When you use the contact form on this site, we collect:</p>
+      <ul>
+        <li>Your name and email address</li>
+        <li>Your company website</li>
+        <li>Project details you provide in the form</li>
+      </ul>
+      <p>If you make a payment, Stripe collects your payment information (card number, billing address) directly. We never see or store your full payment details.</p>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use the information you provide to:</p>
+      <ul>
+        <li>Respond to your inquiry</li>
+        <li>Process payments for services</li>
+        <li>Communicate about ongoing projects</li>
+      </ul>
+
+      <h2>Third-Party Services</h2>
+      <p>We rely on the following third-party services to operate this site:</p>
+      <ul>
+        <li><strong>Formspree</strong> — processes contact form submissions</li>
+        <li><strong>Stripe</strong> — processes payments (PCI-DSS compliant)</li>
+        <li><strong>Cloudflare</strong> — provides web analytics and CDN services</li>
+      </ul>
+      <p>We do not sell, trade, or rent your personal information to anyone.</p>
+
+      <h2>Data Transmission & Security</h2>
+      <p>All data is transmitted over encrypted HTTPS/TLS connections. Payment information is handled entirely by Stripe and is never stored on this site. We rely on PCI-compliant processors to handle sensitive financial data.</p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this privacy policy, email <a href="mailto:hey@jamiesutton.com">hey@jamiesutton.com</a>.</p>
+    </div>
+
+    <a href="./" class="back-link">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      Back to inbox
+    </a>
+  </main>
+
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e97ae9d249d545f3b412931b22b4b7b9"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
